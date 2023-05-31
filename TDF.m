@@ -9,6 +9,6 @@ function [S,f] = TDF(s,tm)
   % La funcion fft solo nos realiza la sumatoria de los prod int.
   S = abs(fft(s));
   % Acomodamos S para que la segunda mitad (parte negativa) pase al principio:
+##  S = [S(N/2+1:N) S(1:N/2)];
   S = [S(round(N/2+1):end) S(1:round(N/2))];
-endfunction
-
+endfunction  
