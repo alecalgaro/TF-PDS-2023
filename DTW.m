@@ -2,15 +2,6 @@
 % a = vector de tamano (1, n)
 % b = vector de tamano (1, m)
 
-
-clear; clc
-a = [2 3 3 4 5 4];
-b = [2 3 4];
-
-a = [1 1 2 3 4 4 5 6];
-b = [1 2 2 2 3 4 5 5 6 6];
-
-
 ##fm = 30;
 ##t1 = 0: 1/fm: 1 - 1/fm;
 ##t2 = 0: 1/fm: 0.5;
@@ -27,17 +18,20 @@ function [dist, an, idx_ij] = DTW(a, b)
 
   if (size(a, 1) != 1 || size(b, 1) != 1)
     printf("Dimension de las entradas erronea!")
-    dist = NaN;
+    dist = an = idx_ij = NaN;
     return
   endif
+
 
   # Busqueda de las distnacias
   an = abs(a' - b);
   an(:, 1) = cumsum(an(:, 1));
   an(1, :) = cumsum(an(1, :));
 
+
+  w = abs(length(a) - length(b));
   for i = 1: length(a) - 1
-      for j = 1: length(b) - 1
+      for j = max(1, i - w): min(length(b) - 1, i + w)
           an(i+1, j+1) += min([an(i,j+1), an(i+1,j), an(i,j)]);
       endfor
   endfor
@@ -76,10 +70,6 @@ function [dist, an, idx_ij] = DTW(a, b)
 
 
 endfunction
-
-
-[dist, an, idx_ij] = DTW(a, b)
-
 
 
 
