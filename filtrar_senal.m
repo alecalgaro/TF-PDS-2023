@@ -25,18 +25,12 @@ function senal_filtrada = filtrar_senal(s, fm, f_min, f_max)
   senal_filtrada = real(ifft(TDF_s_filtrado));
 
   # Mostrar resultado del filtro
-<<<<<<< HEAD
 ##  figure(10)
 ##  plot(abs(TDF_s));
 ##  figure(11)
 ##  plot(abs(TDF_s_filtrado));
 ##  figure(12)
 ##  plot(senal_filtrada)
-=======
-##  plot(abs(TDF_s));
-##  figure
-##  plot(abs(TDF_s_filtrado));
->>>>>>> 0b1907891507f1d9bc1934d18bcbb48e007cb111
 
 endfunction
 
