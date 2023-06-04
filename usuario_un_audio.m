@@ -24,8 +24,8 @@ clear;  clc;  close all;
 ##  IDENTIFICACION DE COMANDO
 ##---------------------------------------------------------------------------
 
-  ## Se busca el comando con mayor similitud a la senal de entrada.
-  disp("")
+  ## Se busca el comando con mayor similitud a la senal de entrada y si se supera
+  ## cierto umbral de similitud se indica como comando valido.
   dif_mismo = DTW(mfcc, mfcc)
 
   dif_adelante = DTW(mfcc, data_adelante)
@@ -34,10 +34,10 @@ clear;  clc;  close all;
   dif_izquierda = DTW(mfcc, data_izquierda)
   dif_parar = DTW(mfcc, data_parar)
   disp("")
-
+  
   [res, i] = min([dif_adelante, dif_atras, dif_derecha, dif_izquierda, dif_parar]);
   res
-  
+
 ##---------------------------------------------------------------------------
 ##  RESULTADO
 ##---------------------------------------------------------------------------
