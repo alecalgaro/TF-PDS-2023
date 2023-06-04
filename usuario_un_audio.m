@@ -1,15 +1,43 @@
+##  Funcion para analizar un archivo ya grabado, representando un solo comando.
+
 clear;  clc;  close all;
 
 ##---------------------------------------------------------------------------
-##  Para analizar un archivo ya grabado, representando un solo comando.
+##  VECTORES DE CARACTERISTICAS DE LOS COMANDOS DISPONIBLES EN EL SISTEMA
+##  (para comparar luego con la senial de entrada)
 ##---------------------------------------------------------------------------
 
-ubicacion_archivo = "NombreCarpeta/nombre_archivo.wav"; % ubicacion de los archivos, sin la numeración, ni la extensión .wav
+  [data_adelante] = load("data_adelante.txt");
+  [data_atras] = load("data_atras.txt");
+  [data_derecha] = load("data_derecha.txt");
+  [data_izquierda] = load("data_izquierda.txt");
+  [data_parar] = load("data_parar.txt");
+
+##---------------------------------------------------------------------------
+##  SE ANALIZA EL AUDIO DE ENTRADA  
+##---------------------------------------------------------------------------
+
+  nombre_archivo = strcat("dataset-ajustes/adelante_2.wav");
+  [mfcc] = analizar_audio(nombre_archivo);
+
+##---------------------------------------------------------------------------
+##  IDENTIFICACION DE COMANDO
+##---------------------------------------------------------------------------
+
+  ## Se busca el comando con mayor similitud a la senal de entrada y si se supera
+  ## cierto umbral de similitud se indica como comando valido.
+
+  dif_adelante = norm(mfcc - data_adelante, 2)
+  dif_atras = norm(mfcc - data_atras, 2)
+  dif_derecha = norm(mfcc - data_derecha, 2)
+  dif_izquierda = norm(mfcc - data_izquierda, 2)
+  dif_parar = norm(mfcc - data_parar, 2)
+  disp("")
   
-nombre_archivo = strcat(ubicacion_archivo,int2str(i),".wav");
+  res = min([dif_adelante, dif_atras, dif_derecha, dif_izquierda, dif_parar])
+  
+##---------------------------------------------------------------------------
+##  RESULTADO
+##---------------------------------------------------------------------------
 
-%--- Se analiza el audio ---
-
-[..] = analizar_audio(nombre_archivo);
-
-%--- Se muestran los datos ---
+  ## Mostrar si la senial de entrada fue un comando valido o no
