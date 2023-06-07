@@ -22,8 +22,11 @@ clear;  clc;  close all;
   [caract] = analizar_audio(nombre_archivo);
 
 
-
-##  # Guardo los datos de referencia por aca, asi cambio el nombre del archivo txt
+  # Guardo los datos de referencia por aca, asi cambio el nombre del archivo txt
+  # Lo bueno es que puedo cambiar la referencia por aca, simplemente eligiendo el
+  # "cual" especifico. Si quiero actualizar atras_1 a atras_2, le cambio
+  # el nombre simplemente y actualizo con los comandos siguientes.
+##
 ##  ref = [ "adelante_1"  ;
 ##          "atras_1"     ;
 ##          "derecha_1"   ;
@@ -31,12 +34,26 @@ clear;  clc;  close all;
 ##          "izquierda_1" ;
 ##          "parar_1"];
 ##
-##  cual = 6;
+####  for cual = 1: size(ref, 1)
+##    cual = 2;
+##    nombre_archivo = strcat("dataset-ajustes/", ref(cual, :),".wav");
 ##
-##  nombre_archivo = strcat("dataset-ajustes/", ref(cual, :),".wav");
-##
-##  [caract] = analizar_audio(nombre_archivo);
-##  save data_parar.txt caract;
+##    [caract] = analizar_audio(nombre_archivo);
+##    switch (cual)
+##      case 1
+##        save data_adelante.txt caract;
+##      case 2
+##        save data_atras.txt caract;
+##      case 3
+##        save data_derecha.txt caract;
+##      case 4
+##        save data_detener.txt caract;
+##      case 5
+##        save data_izquierda.txt caract;
+##      case 6
+##        save data_parar.txt caract;
+##    endswitch
+####  endfor
 
 ##---------------------------------------------------------------------------
 ##  IDENTIFICACION DE COMANDO
