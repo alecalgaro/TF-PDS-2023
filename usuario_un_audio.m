@@ -18,8 +18,25 @@ clear;  clc;  close all;
 ##  SE ANALIZA EL AUDIO DE ENTRADA
 ##---------------------------------------------------------------------------
 
-  nombre_archivo = strcat("dataset-ajustes/adelante_2.wav");
-  [mfcc] = analizar_audio(nombre_archivo);
+  nombre_archivo = strcat("dataset-ajustes/atras_1.wav");
+  [caract] = analizar_audio(nombre_archivo);
+
+
+
+##  # Guardo los datos de referencia por aca, asi cambio el nombre del archivo txt
+##  ref = [ "adelante_1"  ;
+##          "atras_1"     ;
+##          "derecha_1"   ;
+##          "detener_1"   ;
+##          "izquierda_1" ;
+##          "parar_1"];
+##
+##  cual = 6;
+##
+##  nombre_archivo = strcat("dataset-ajustes/", ref(cual, :),".wav");
+##
+##  [caract] = analizar_audio(nombre_archivo);
+##  save data_parar.txt caract;
 
 ##---------------------------------------------------------------------------
 ##  IDENTIFICACION DE COMANDO
@@ -28,15 +45,15 @@ clear;  clc;  close all;
   ## Se busca el comando con mayor similitud a la senal de entrada y si se supera
   ## cierto umbral de similitud se indica como comando valido.
   disp("")
-  dif_mismo = DTW(mfcc, mfcc)
+  dif_mismo = DTW(caract, caract)
 
-  dif_adelante = DTW(mfcc, data_adelante)
-  dif_atras = DTW(mfcc, data_atras)
-  dif_derecha = DTW(mfcc, data_derecha)
-  dif_izquierda = DTW(mfcc, data_izquierda)
-  dif_detener = DTW(mfcc, data_detener)
+  dif_adelante = DTW(caract, data_adelante)
+  dif_atras = DTW(caract, data_atras)
+  dif_derecha = DTW(caract, data_derecha)
+  dif_izquierda = DTW(caract, data_izquierda)
+  dif_detener = DTW(caract, data_detener)
   disp("")
-  
+
   [res, i] = min([dif_adelante, dif_atras, dif_derecha, dif_izquierda, dif_detener]);
   res
 
@@ -46,12 +63,12 @@ clear;  clc;  close all;
 
   ## Mostrar si la senial de entrada fue un comando valido o no, verificando si
   ## supera cierto umbral de similitud, e indicar cual fue el comando.
-  
+
   comando = [" adelante"; " atras"; " derecha"; " izquierda"; " detener"];
-  
+
   umbral = 0;
   if(res > umbral)
     disp(strcat("Comando elegido:", comando(i,:)))
   elseif
     disp("Comando no valido")
-  endif  
+  endif

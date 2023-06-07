@@ -34,7 +34,7 @@ function dist = DTW(a, b)
     endfor
   endfor
 
-  dist = full(an(end,end));
+  dist = full(an(end,end))/(len_a + len_b - 1);
 
 endfunction
 
