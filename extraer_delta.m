@@ -3,7 +3,7 @@ function delta_mfcc = extraer_delta(mfcc, n)
   delta_mfcc = zeros(size(mfcc));
   len_T = size(mfcc, 2);
 
-  # Recorrida de cada ventana y calcular delta
+  # Se recorre cada ventana y se calcula delta
   for i = n + 1: len_T - n
 
     # Trabajo en forma matricial, tiene cantidad de fila de mfcc, 26x1
@@ -17,4 +17,3 @@ function delta_mfcc = extraer_delta(mfcc, n)
   endfor
 
 endfunction
-
