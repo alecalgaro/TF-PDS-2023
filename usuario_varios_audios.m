@@ -20,20 +20,20 @@
 ##  Se leen todos los audios correspondientes a un comando
 ##---------------------------------------------------------------------------
 
-  ubicacion_archivo = "dataset-ajustes/adelante_";  % ubicacion de los archivos, sin la numeración, ni la extensión .wav
-  cant_audios = 6; % cantidad de audios
+  ubicacion_archivo = "dataset-pruebas/adelante_";  % ubicacion de los archivos, sin la numeración, ni la extensión .wav
+  cant_audios = 12; % cantidad de audios
 
-  ##ubicacion_archivo = "dataset-ajustes/atras_";  % ubicacion de los archivos, sin la numeración, ni la extensión .wav
-  ##cant_audios = 5; % cantidad de audios
+##  ubicacion_archivo = "dataset-pruebas/atras_";  % ubicacion de los archivos, sin la numeración, ni la extensión .wav
+##  cant_audios = 12; % cantidad de audios
 
-  ##ubicacion_archivo = "dataset-ajustes/derecha_";  % ubicacion de los archivos, sin la numeración, ni la extensión .wav
-  ##cant_audios = 4; % cantidad de audios
+##  ubicacion_archivo = "dataset-pruebas/derecha_";  % ubicacion de los archivos, sin la numeración, ni la extensión .wav
+##  cant_audios = 12; % cantidad de audios
 
-  ##ubicacion_archivo = "dataset-ajustes/izquierda_";  % ubicacion de los archivos, sin la numeración, ni la extensión .wav
-  ##cant_audios = 4; % cantidad de audios
+##  ubicacion_archivo = "dataset-pruebas/izquierda_";  % ubicacion de los archivos, sin la numeración, ni la extensión .wav
+##  cant_audios = 12; % cantidad de audios
 
-  ##ubicacion_archivo = "dataset-ajustes/detener_";  % ubicacion de los archivos, sin la numeración, ni la extensión .wav
-  ##cant_audios = 4; % cantidad de audios
+##  ubicacion_archivo = "dataset-pruebas/detener_";  % ubicacion de los archivos, sin la numeración, ni la extensión .wav
+##  cant_audios = 12; % cantidad de audios
 
 ##---------------------------------------------------------------------------
 ##  Se recorren y analizan todos los audios
@@ -49,8 +49,6 @@
     ##---------------------------------------------------------------------------
 
     disp("")
-    dif_mismo = DTW(caract, caract)   % solo para probar
-
     dif_adelante = DTW(caract, data_adelante)
     dif_atras = DTW(caract, data_atras)
     dif_derecha = DTW(caract, data_derecha)
@@ -66,12 +64,15 @@
     ##---------------------------------------------------------------------------
 
     comando = [" adelante"; " atras"; " derecha"; " izquierda"; " detener"];
-    umbral = [3.1, 3.7, 2.4, 2.9, 3.1];
+    disp(strcat("Comando elegido:", comando(i,:)))
 
-    if(res < umbral(i))
-      disp(strcat("Comando elegido:", comando(i,:)))
-    else
-      disp("Comando no valido")
-    endif
+% Si se quiere utilizar el umbral para comandos sin ruido:
+##  umbral = [3.1, 3.7, 2.4, 2.9, 3.1];
+##
+##  if(res < umbral(i))
+##    disp(strcat("Comando elegido:", comando(i,:)))
+##  else
+##    disp("Comando no valido")
+##  endif
 
   endfor

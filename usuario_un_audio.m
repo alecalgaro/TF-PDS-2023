@@ -23,8 +23,8 @@ clear;  clc;  close all;
 ##  SE ANALIZA EL AUDIO DE ENTRADA
 ##---------------------------------------------------------------------------
 
-  nombre_archivo = strcat("dataset-ajustes/adelante_2.wav");
-##  nombre_archivo = strcat("dataset-ajustes/comando_no_valido_adelante_2.wav");
+##  nombre_archivo = strcat("dataset-ajustes/adelante_2.wav");
+  nombre_archivo = strcat("dataset-ajustes/comando_no_valido_derecha_1.wav");
   [caract] = analizar_audio(nombre_archivo);
 
 ## Para cuando se quieren actualizar los txt con los vectores de caracteristicas
@@ -40,8 +40,6 @@ clear;  clc;  close all;
 ##---------------------------------------------------------------------------
 
   disp("")
-  dif_mismo = DTW(caract, caract)   % solo para probar
-
   dif_adelante = DTW(caract, data_adelante)
   dif_atras = DTW(caract, data_atras)
   dif_derecha = DTW(caract, data_derecha)
@@ -61,10 +59,14 @@ clear;  clc;  close all;
   ## mayor similitud, e indicar cual fue el comando.
 
   comando = [" adelante"; " atras"; " derecha"; " izquierda"; " detener"];
-  umbral = [3.1, 3.7, 2.4, 2.9, 3.1];
 
-  if(res < umbral(i))
-    disp(strcat("Comando elegido:", comando(i,:)))
-  else
-    disp("Comando no valido")
-  endif
+  disp(strcat("Comando elegido:", comando(i,:)))
+
+% Si se quiere utilizar el umbral para comandos sin ruido:
+##  umbral = [3.1, 3.7, 2.4, 2.9, 3.1];
+##
+##  if(res < umbral(i))
+##    disp(strcat("Comando elegido:", comando(i,:)))
+##  else
+##    disp("Comando no valido")
+##  endif
