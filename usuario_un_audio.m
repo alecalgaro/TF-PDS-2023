@@ -1,3 +1,4 @@
+##--------------------------------------------------------------------------
 ## Funcion para analizar un archivo ya grabado, representando un solo comando,
 ## simulando como el usuario utilizaria el sistema ingresando un comando de voz.
 
@@ -5,6 +6,7 @@
 ## la funcion DTW para ajustar las ventanas y calcular las diferencias entre las
 ## caracteristicas de la senal de entrada y los comandos disponibles en el sistema.
 ## Si se supera cierto umbral de similitud se indica como comando valido.
+##--------------------------------------------------------------------------
 
 clear;  clc;  close all;
 
