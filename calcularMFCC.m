@@ -11,7 +11,7 @@ function mfcc = calcularMFCC(fftFrames, fs, frameSamples, numFiltros, numCoefici
   filtrosMel = bancoFiltrosMel(fs, frameSamples, numFiltros);
 
   % Aplicacion del banco de filtros mel a los espectros
-  framesFiltrados = filtrosMel * fftFrames(1:frameSamples/2 + 1, :);
+  framesFiltrados = filtrosMel * (fftFrames(1:frameSamples/2 + 1, :)).^2;
 
   % Calculo de los logaritmos de las energas filtradas
   logEnergias = log(framesFiltrados);

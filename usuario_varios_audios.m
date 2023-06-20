@@ -20,11 +20,11 @@
 ##  Se leen todos los audios correspondientes a un comando
 ##---------------------------------------------------------------------------
 
-  ubicacion_archivo = "dataset-pruebas/adelante_";  % ubicacion de los archivos, sin la numeración, ni la extensión .wav
-  cant_audios = 12; % cantidad de audios
-
-##  ubicacion_archivo = "dataset-pruebas/atras_";  % ubicacion de los archivos, sin la numeración, ni la extensión .wav
+##  ubicacion_archivo = "dataset-pruebas/adelante_";  % ubicacion de los archivos, sin la numeración, ni la extensión .wav
 ##  cant_audios = 12; % cantidad de audios
+
+  ubicacion_archivo = "dataset-pruebas/atras_";  % ubicacion de los archivos, sin la numeración, ni la extensión .wav
+  cant_audios = 12; % cantidad de audios
 
 ##  ubicacion_archivo = "dataset-pruebas/derecha_";  % ubicacion de los archivos, sin la numeración, ni la extensión .wav
 ##  cant_audios = 12; % cantidad de audios

@@ -25,8 +25,7 @@ clear;  clc;  close all;
 ##  SE ANALIZA EL AUDIO DE ENTRADA
 ##---------------------------------------------------------------------------
 
-##  nombre_archivo = strcat("dataset-ajustes/adelante_2.wav");
-  nombre_archivo = strcat("dataset-ajustes/comando_no_valido_derecha_1.wav");
+  nombre_archivo = strcat("dataset-ajustes/detener_1.wav");
   [caract] = analizar_audio(nombre_archivo);
 
 ## Para cuando se quieren actualizar los txt con los vectores de caracteristicas
@@ -55,10 +54,6 @@ clear;  clc;  close all;
 ##---------------------------------------------------------------------------
 ##  RESULTADO
 ##---------------------------------------------------------------------------
-
-  ## Mostrar si la senal de entrada fue un comando valido o no, verificando si
-  ## supera cierto umbral de similitud de acuerdo al comando de referencia con
-  ## mayor similitud, e indicar cual fue el comando.
 
   comando = [" adelante"; " atras"; " derecha"; " izquierda"; " detener"];
 
