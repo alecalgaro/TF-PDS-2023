@@ -25,7 +25,7 @@ clear;  clc;  close all;
 ##  SE ANALIZA EL AUDIO DE ENTRADA
 ##---------------------------------------------------------------------------
 
-  nombre_archivo = strcat("dataset-ajustes/detener_1.wav");
+  nombre_archivo = strcat("dataset-ajustes/detener_2a.wav");
   [caract] = analizar_audio(nombre_archivo);
 
 ## Para cuando se quieren actualizar los txt con los vectores de caracteristicas
@@ -60,7 +60,7 @@ clear;  clc;  close all;
   disp(strcat("Comando elegido:", comando(i,:)))
 
 % Si se quiere utilizar el umbral para comandos sin ruido:
-##  umbral = [3.1, 3.7, 2.4, 2.9, 3.1];
+##  umbral = [5.3, 6.7, 4.2, 4.5, 4.7];
 ##
 ##  if(res < umbral(i))
 ##    disp(strcat("Comando elegido:", comando(i,:)))
