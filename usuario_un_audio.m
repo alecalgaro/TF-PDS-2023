@@ -41,15 +41,14 @@ clear;  clc;  close all;
 ##---------------------------------------------------------------------------
 
   disp("")
-  dif_adelante = DTW(caract, data_adelante)
-  dif_atras = DTW(caract, data_atras)
-  dif_derecha = DTW(caract, data_derecha)
-  dif_izquierda = DTW(caract, data_izquierda)
-  dif_detener = DTW(caract, data_detener)
-  disp("")
+  dif_adelante = DTW(caract, data_adelante);
+  dif_atras = DTW(caract, data_atras);
+  dif_derecha = DTW(caract, data_derecha);
+  dif_izquierda = DTW(caract, data_izquierda);
+  dif_detener = DTW(caract, data_detener);
 
   [res, i] = min([dif_adelante, dif_atras, dif_derecha, dif_izquierda, dif_detener]);
-  res
+  res;
 
 ##---------------------------------------------------------------------------
 ##  RESULTADO
